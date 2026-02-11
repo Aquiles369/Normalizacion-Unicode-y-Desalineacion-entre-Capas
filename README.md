@@ -18,6 +18,9 @@
  **Catálogo técnico interactivo para analizar normalización Unicode aplicada a seguridad web. Enfocado en NFC, NFD, NFKC y NFKD y en cómo discrepancias entre WAF, backend, runtime y navegador generan desalineación semántica explotable. Incluye análisis práctico de equivalencia canónica vs compatibilidad, propiedades de Quick_Check, Composition_Exclusion y comportamiento en distintos puntos del pipeline (input → WAF → backend → runtime → navegador).** 
 <br><br> 
 
+**Proyecto en investigación activa. El contenido evoluciona conforme se validan nuevos escenarios de normalización y desalineación entre capas.** 
+<br><br> 
+
 <br>
 <picture> <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width ="1050" > </picture>
 <br>
