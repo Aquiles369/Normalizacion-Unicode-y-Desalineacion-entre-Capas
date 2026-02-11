@@ -45,6 +45,10 @@ Está en la desalineación semántica entre capas.
 
 <br>
 
+<picture> <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">  </picture>
+
+<br>
+
 ### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXVvem9uczRjOTUycTdlM2N0a3h5Mmx1Mnl2eXg4dWg4enFya2d3NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/WvkRfmIxMOm6iUYouv/giphy.gif" width = 75px>  </picture> Qué aporta y cómo beneficia <br><br>
 
 <br>
