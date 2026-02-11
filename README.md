@@ -15,7 +15,7 @@
 
 <br>
 
- **Catálogo web interactivo de códigos HTTP para bug bounty/pentesting. Incluye 1xx–5xx oficiales + “extra” no oficiales (Cloudflare, Nginx, etc.), búsqueda instantánea por número/texto, favoritos  y notas  con modal, categorías coloreadas, header/buscador fijo y encabezados de tabla sticky para navegar sin perder contexto. Todo persiste en localStorage y permite importar/exportar preferencias en JSON. Licencia MIT.** 
+ **Catálogo técnico interactivo para analizar normalización Unicode aplicada a seguridad web. Enfocado en NFC, NFD, NFKC y NFKD y en cómo discrepancias entre WAF, backend, runtime y navegador generan desalineación semántica explotable. Incluye análisis práctico de equivalencia canónica vs compatibilidad, propiedades de Quick_Check, Composition_Exclusion y comportamiento en distintos puntos del pipeline (input → WAF → backend → runtime → navegador).** 
 <br><br> 
 
 <p align="center">
@@ -27,24 +27,47 @@
 <br>
 
 ### <picture> <img src = "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjExOWp1d25mbDh2YnJhdHJ6OHdlZXhoNGZmdmtlb2F3NnlhcWs0NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/Ha2DszQVpjI1AxvW5h/giphy.gif" width = 75px>  </picture> Problema que resuelve<br><br>
-**Cuando estás auditando aplicaciones web o haciendo bug bounty, interpretar correctamente las respuestas HTTP es clave para entender el comportamiento del backend, detectar configuraciones incorrectas, encontrar vectores explotables o incluso descubrir endpoints sensibles.<br><br>
-• El problema es que la mayoría de las veces:<br><br>
-• Tenés que buscar cada código en Google manualmente.<br><br>
-• Las respuestas “extra” (Cloudflare, Nginx, cPanel, etc.) ni siquiera están documentadas en la RFC.<br><br>
-• No podés guardar notas ni organizar la información relevante.<br><br>
-• Esta herramienta elimina ese cuello de botella: centraliza todos los códigos HTTP oficiales y no oficiales en un solo lugar, accesibles en segundos, con buscador instantáneo, notas, favoritos y exportación de preferencias. Así, pasás menos tiempo buscando y más tiempo analizando.</a>.** 
+**Cuando auditás aplicaciones web, muchos asumen que usar homoglyphs o caracteres “raros” es suficiente para bypass.<br><br>
+El problema real es otro:<br><br>
+• No todos los sistemas normalizan igual.<br><br>
+• No todos normalizan en el mismo momento.<br><br>
+• Algunos hacen matching antes de normalizar.<br><br>
+• Otros normalizan en NFKC mientras el backend compara en NFC.</a>.** 
+
+<br><br>
+
+Esto genera:<br><br>
+
+• Falsos positivos en pruebas ofensivas.<br><br>
+• Payloads que “parecen funcionar” pero se recomponen y dejan de ejecutar.<br><br>
+• Ventanas lógicas cuando WAF y backend interpretan distinto el mismo input.<br><br>
+
+<br>
+
+La superficie real no está en el carácter extraño.
+Está en la desalineación semántica entre capas.
 
 <br>
 
 ### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnJ1Z2xlanAxMHM2bWZ2djM3Y3h5cTZleHA0cGJ2bmpmMXRucjlweSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/lHXsw5hwW0UAnSdHAH/giphy.gif" width = 75px>  </picture> Qué aporta y cómo beneficia <br><br>
-**• Conocimiento completo en segundos: reúne todos los códigos oficiales (1xx–5xx) y más de 20 códigos “extra” reales utilizados por proveedores como Cloudflare, Nginx o cPanel, incluso los menos conocidos como 425 Too Early. Esto te evita perder tiempo buscando documentación dispersa y te da acceso inmediato a toda la información relevante.<br><br>
-• Aceleración de tu flujo de trabajo: el buscador interno y el soporte para Ctrl + F permiten saltar al instante al código que necesitás analizar, por número, nombre o descripción. Esto agiliza la toma de decisiones y te hace avanzar mucho más rápido en las fases de recon y explotación.<br><br>
-• Mejor contexto y decisiones más inteligentes: entender en segundos qué significa un estado HTTP te da una ventaja táctica: sabés si un endpoint redirige, si hay filtrado activo, si la respuesta proviene de un proxy intermedio o si revela detalles del backend. Esa información puede marcar la diferencia entre un hallazgo superficial y una vulnerabilidad crítica.<br><br>
-• Documentación personalizada sin esfuerzo: cada código tiene un panel de notas editable para agregar observaciones, comportamientos específicos que encontraste o pasos a seguir. Además, podés marcar favoritos y exportar todo como JSON, creando tu propia base de conocimiento reutilizable.<br><br>
-• Uso local, simple y sin dependencias: al funcionar completamente en tu navegador con localStorage, no necesita backend ni conexión. Esto lo hace ideal para laboratorios, entornos aislados o auditorías sin acceso a internet, manteniendo tus datos bajo control total.<br><br>
-• Más foco en la explotación: al tener toda la información centralizada y accesible de inmediato, eliminás el tiempo perdido en búsquedas externas y podés concentrarte en lo que realmente importa: analizar, explotar y reportar vulnerabilidades.</a>.** 
 
 <br>
+
+• Comprensión real de NFC, NFD, NFKC y NFKD en contexto ofensivo.<br><br>
+• Diferenciación técnica entre equivalencia canónica y equivalencia de compatibilidad.<br><br>
+• Análisis del impacto de NFC_Quick_Check=Maybe en validaciones.<br><br>
+• Estudio de Composition_Exclusion y estabilidad post Unicode 4.1.<br><br>
+• Evaluación de normalización en concatenación, buffering y condiciones stream-safe.<br><br>
+• Identificación de escenarios donde el orden de normalización altera el resultado final.
+
+<br><br>
+
+Esto permite:<br><br>
+
+• Reducir bypass teóricos sin base técnica.<br><br>
+• Detectar inconsistencias reales entre WAF y backend.<br><br>
+• Enfocar pruebas en divergencias observables, no en gimmicks visuales.<br>
+
 
 
 <picture> <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width ="1050" > </picture>
@@ -53,62 +76,67 @@
 ### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExczVrcnhwNDAzajJmMWhrN3p3OGg2b3B0emRoOGFlMnNlNm04Y2I3dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/nndsQSOMEUToRELiAE/giphy.gif" width = 80px>  </picture> Resumen rápido
 <br><br>
 
-Catálogo web interactivo de códigos HTTP para bug bounty/pentesting. Incluye todos los oficiales 1xx–5xx (con 425 Too Early) + ~20 “extra” no oficiales (Cloudflare).<br>
+Investigación aplicada a bug bounty ético sobre cómo la normalización Unicode puede modificar la semántica efectiva del input.<br><br>
+
+No es un estudio de “caracteres raros”.<br><br>
+
+Es un análisis del pipeline completo de interpretación:<br><br>
+
+input → normalización → matching → backend → runtime → navegador<br><br>
+
+Unicode no es solo encoding.
+Es equivalencia semántica formal definida en el estándar.<br><br>
+
+La explotación aparece cuando dos capas no aplican la misma equivalencia.<br>
 
 
-• Formato: interfaz web local (HTML/JS), toda la data se guarda en localStorage por defecto (offline, en tu máquina).<br><br>
 
-• Pasos a seguir:<br>
-1. Descarga el repositorio.<br>
-2. Abra el archivo Estados_servidor.html en con su navegador preferido.<br>
-3. Introduzca el código de estado (ej.: 429) o presione Ctrl + F y busque "429".<br>
 
 <br>
 
 <picture> <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width ="1050" > </picture>
 <br>
 
-### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXB5c2oxYnBwdGJpc3hhejl1c3Jzc3cyZTlzOWQ4a2N4dGx4eWdjbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/vYBtBiaNcZF3F3Iaip/giphy.gif" width = 80px>  </picture> Características
+### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXB5c2oxYnBwdGJpc3hhejl1c3Jzc3cyZTlzOWQ4a2N4dGx4eWdjbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/vYBtBiaNcZF3F3Iaip/giphy.gif" width = 80px>  </picture> Recursos oficiales utilizados
 <br><br>
 
 
-• Iniciar / Parar con botones y atajos (S = iniciar, P = parar).
+• https://www.unicode.org/versions/Unicode17.0.0/
+Página oficial de versiones del estándar Unicode. Documenta reglas formales de normalización, estabilidad y definiciones normativas.<br><br>
 
-• Buscador por categoría y texto: filtra códigos por categoría (1xx, 2xx, 3xx, 4xx, 5xx y extra).
+• https://www.unicode.org/Public/UCD/latest/ucd/
+Unicode Character Database (UCD). Contiene todas las propiedades formales de los codepoints: categorías, decompositions, combining classes, Quick_Check, etc. Es la base técnica real del comportamiento de normalización.<br><br>
 
-• Persistencia local (sin backend) vía localStorage.
+• https://www.unicode.org/Public/UCD/latest/ucd/DerivedNormalizationProps.txt
+Archivo derivado que lista propiedades específicas relacionadas con normalización, como NFC_QC, NFKC_QC y Composition_Exclusion. Fundamental para entender qué caracteres pueden cambiar bajo cada forma.<br><br>
 
-• Ctrl + F (búsqueda rápida): si presionás Ctrl+F e ingresás un código (ej.: 302), el navegador te lleva a la sección/parte donde se describe ese código.
+• https://util.unicode.org/UnicodeJsps/character.jsp
+Herramienta oficial para inspeccionar propiedades de un codepoint individual.<br><br>
 
-• Buscador interno: el campo de búsqueda de la app permite encontrar por número, nombre o descripción y navegar directamente al resultado.
-
-• Notas por código: cada código HTTP tiene su panel de notas editable (guardar, editar, eliminar); se muestra la última modificación.
-
-• Ocultar/mostrar categorías: podés ocultar categorías completas; recomendado no ocultarlas porque Ctrl+F del navegador no buscará dentro de secciones colapsadas — sí podés usar el buscador interno.
-
-• Favoritos: agrega códigos a “Mis favoritos” para filtrar ruido visual y quedarte solo con lo que te interesa.
-
-• Importar / Exportar: exportá e importá preferencias, favoritos y notas en un JSON (ej.: importa.json).
-
-• Cobertura: incluye todos los códigos HTTP oficiales (1xx–5xx, incluyendo 425 Too Early) y ~20 códigos extra/no oficiales (Cloudflare, Nginx, cPanel, frameworks, etc.) que se usan en la vida real.
+Ejemplo:<br>
+https://util.unicode.org/UnicodeJsps/character.jsp?a=2126
+Permite analizar propiedades como descomposición, Quick_Check y exclusiones de composición en un carácter concreto (U+2126 OHM SIGN).<br>
 
 <picture> <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width ="1050" > </picture>
 <br>
 
-### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGdlNnJtczFndjRkZXczMXR0MmRvMHJteXJmMG5hOWN3djdzcmhqYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/DY4GxWN6Ml3oVexySy/giphy.gif" width = 80px>  </picture> Uso
+### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGdlNnJtczFndjRkZXczMXR0MmRvMHJteXJmMG5hOWN3djdzcmhqYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/DY4GxWN6Ml3oVexySy/giphy.gif" width = 80px>  </picture> Enfoque
 <br><br>
 
 
-• Búsqueda de códigos HTTP: primero ingrese el código HTTP que le devolvió el servidor (ej.: 429) en el buscador interno, o use Ctrl + F para que el navegador lo lleve a la sección donde se describe ese código.
+Investigación ofensiva con base normativa, centrada en:<br>
 
-• Uso simple y minimalista: diseñado para que cualquiera lo pueda usar sin complicaciones.
+• Propiedades formales del estándar Unicode.<br><br>
+• Divergencias reales entre motores de normalización.<br><br>
+• Impacto práctico en WAF, validadores y runtimes.<br><br>
+• Normalización como vector lógico, no visual.<br><br>
  
  <br>
 
 <picture> <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width ="1050" > </picture>
 <br>
 
-### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3YwbG9zbmU1amprdTJsbmxzYnpobzd5eGtnazB6b2FmdnllaTRhZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/h8UlsEpqiCISTKUzvz/giphy.gif" width = 80px>  </picture> "Buscar rápido: escribe el código HTTP (ej.: 429) en el buscador para saltar instantáneamente a su descripción completa , incluye todos los códigos (oficiales y no oficiales, incluso los menos conocidos) en un único lugar."
+### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3YwbG9zbmU1amprdTJsbmxzYnpobzd5eGtnazB6b2FmdnllaTRhZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/h8UlsEpqiCISTKUzvz/giphy.gif" width = 80px>  </picture> “Analiza cómo NFC, NFD, NFKC y NFKD transforman realmente el input, identifica en qué punto del pipeline se normaliza y detecta desalineaciones entre WAF, backend y runtime antes de que se conviertan en superficie explotable.”
 <br>
 
 
