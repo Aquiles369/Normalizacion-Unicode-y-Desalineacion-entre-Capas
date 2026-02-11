@@ -18,15 +18,11 @@
  **Catálogo técnico interactivo para analizar normalización Unicode aplicada a seguridad web. Enfocado en NFC, NFD, NFKC y NFKD y en cómo discrepancias entre WAF, backend, runtime y navegador generan desalineación semántica explotable. Incluye análisis práctico de equivalencia canónica vs compatibilidad, propiedades de Quick_Check, Composition_Exclusion y comportamiento en distintos puntos del pipeline (input → WAF → backend → runtime → navegador).** 
 <br><br> 
 
-<p align="center">
- <img  height="420rem" alt="GIF" src="https://github.com/Aquiles369/iconos/blob/main/demo_codigos_http.gif"/>
-</p>
-
 <br>
 <picture> <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width ="1050" > </picture>
 <br>
 
-### <picture> <img src = "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjExOWp1d25mbDh2YnJhdHJ6OHdlZXhoNGZmdmtlb2F3NnlhcWs0NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/Ha2DszQVpjI1AxvW5h/giphy.gif" width = 75px>  </picture> Problema que resuelve<br><br>
+### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzZhdzU1ejBxaXJhaHcwZnVqN2xxcHFhMmI2dWdudnM3ZGd3aDV1dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/LS8dIaRdiTEFVBSxDF/giphy.gif" width = 75px>  </picture> Problema que resuelve<br><br>
 **Cuando auditás aplicaciones web, muchos asumen que usar homoglyphs o caracteres “raros” es suficiente para bypass.<br><br>
 El problema real es otro:<br><br>
 • No todos los sistemas normalizan igual.<br><br>
@@ -49,7 +45,7 @@ Está en la desalineación semántica entre capas.
 
 <br>
 
-### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnJ1Z2xlanAxMHM2bWZ2djM3Y3h5cTZleHA0cGJ2bmpmMXRucjlweSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/lHXsw5hwW0UAnSdHAH/giphy.gif" width = 75px>  </picture> Qué aporta y cómo beneficia <br><br>
+### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXVvem9uczRjOTUycTdlM2N0a3h5Mmx1Mnl2eXg4dWg4enFya2d3NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/WvkRfmIxMOm6iUYouv/giphy.gif" width = 75px>  </picture> Qué aporta y cómo beneficia <br><br>
 
 <br>
 
@@ -73,7 +69,7 @@ Esto permite:<br><br>
 <picture> <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width ="1050" > </picture>
 <br>
 
-### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExczVrcnhwNDAzajJmMWhrN3p3OGg2b3B0emRoOGFlMnNlNm04Y2I3dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/nndsQSOMEUToRELiAE/giphy.gif" width = 80px>  </picture> Resumen rápido
+### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHR3cDVhNXY0bDZteHRkMWNrNmQzMXF4NzJ1MXoyeGU2eXMzNXA4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/fYMrCNMFkCeEdwB2Vo/giphy.gif" width = 80px>  </picture> Resumen rápido
 <br><br>
 
 Investigación aplicada a bug bounty ético sobre cómo la normalización Unicode puede modificar la semántica efectiva del input.<br><br>
@@ -97,7 +93,7 @@ La explotación aparece cuando dos capas no aplican la misma equivalencia.<br>
 <picture> <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width ="1050" > </picture>
 <br>
 
-### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXB5c2oxYnBwdGJpc3hhejl1c3Jzc3cyZTlzOWQ4a2N4dGx4eWdjbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/vYBtBiaNcZF3F3Iaip/giphy.gif" width = 80px>  </picture> Recursos oficiales utilizados
+### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHR3cDVhNXY0bDZteHRkMWNrNmQzMXF4NzJ1MXoyeGU2eXMzNXA4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/fYMrCNMFkCeEdwB2Vo/giphy.gif" width = 80px>  </picture> Recursos oficiales utilizados
 <br><br>
 
 
@@ -120,7 +116,7 @@ Permite analizar propiedades como descomposición, Quick_Check y exclusiones de 
 <picture> <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width ="1050" > </picture>
 <br>
 
-### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGdlNnJtczFndjRkZXczMXR0MmRvMHJteXJmMG5hOWN3djdzcmhqYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/DY4GxWN6Ml3oVexySy/giphy.gif" width = 80px>  </picture> Enfoque
+### <picture> <img src = "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWV6Y3FmbmxpdjNwd2dhNGMydHh1OHZiZ2cxYTh6a2JxbTNoc3R1YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/ZEl47uGZlLY3CRHl5Y/giphy.gif" width = 80px>  </picture> Enfoque
 <br><br>
 
 
